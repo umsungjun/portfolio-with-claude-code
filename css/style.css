@@ -1,0 +1,102 @@
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* 다크모드 전환 애니메이션 */
+body,
+nav,
+section,
+footer,
+.project-card,
+.bg-white,
+.bg-gray-50 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* fade-in 애니메이션 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 프로젝트 카드 호버 */
+.project-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.dark .project-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 네비게이션 활성 링크 */
+.nav-link.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dark .nav-link.active {
+  color: #60a5fa;
+}
+
+/* 모바일 메뉴 토글 애니메이션 */
+#menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+#menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* 맨 위로 가기 버튼 활성화 */
+#scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 스크롤바 - 라이트 모드 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* 스크롤바 - 다크 모드 */
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
