@@ -4,6 +4,47 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* 타이포그래피 강화 */
+h1 {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+h2 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* 그라데이션 애니메이션 */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-pulse-slow-delay {
+  animation: pulse-slow 8s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
 /* 다크모드 전환 애니메이션 */
 body,
 nav,
@@ -29,16 +70,34 @@ footer,
 
 /* 프로젝트 카드 호버 */
 .project-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    0 0 40px rgba(59, 130, 246, 0.2);
 }
 
 .dark .project-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.4),
+    0 10px 10px -5px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(96, 165, 250, 0.3),
+    0 0 50px rgba(96, 165, 250, 0.4);
+}
+
+/* 기술 스택 태그 호버 */
+.skill-tag {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.skill-tag:hover {
+  transform: translateY(-6px) scale(1.1);
 }
 
 /* 네비게이션 활성 링크 */
@@ -49,6 +108,22 @@ footer,
 
 .dark .nav-link.active {
   color: #60a5fa;
+}
+
+/* 네비게이션 스크롤 효과 */
+#navbar {
+  transition: all 0.3s ease;
+}
+
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+.dark #navbar.scrolled {
+  background-color: rgba(31, 41, 55, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(96, 165, 250, 0.2);
 }
 
 /* 모바일 메뉴 토글 애니메이션 */
@@ -72,20 +147,21 @@ footer,
 
 /* 스크롤바 - 라이트 모드 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #3b82f6, #6366f1);
+  border-radius: 5px;
+  border: 2px solid #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: linear-gradient(180deg, #2563eb, #4f46e5);
 }
 
 /* 스크롤바 - 다크 모드 */
@@ -94,9 +170,10 @@ footer,
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: linear-gradient(180deg, #60a5fa, #818cf8);
+  border: 2px solid #1f2937;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: linear-gradient(180deg, #3b82f6, #6366f1);
 }
